@@ -43,13 +43,9 @@ class app {
 
   mysql::db::create { $db_name: }
 
-  mysql::user::create { $db_username:
-    host     => 'localhost',
-    password => $db_password,
-  }
-
   mysql::user::grant {$db_username:
     host     => 'localhost',
+    password => $db_password,
     database => $db_name,
   }
 
