@@ -4,9 +4,8 @@
 # ------------------------------------------------------------------------
 # CONFIGURABLE PROPERTIES
 # ------------------------------------------------------------------------
-$hostname  = 'laravel-project-name.dev'
-$http_port = 8001
-$ssh_port  = 2001
+$hostname  = 'craft-project.dev'
+$ip = '192.168.11.11'
 # ------------------------------------------------------------------------
 
 Vagrant.configure('2') do |config|
@@ -16,8 +15,7 @@ Vagrant.configure('2') do |config|
 
   # Networking.
   config.vm.hostname = $hostname
-  config.vm.network :forwarded_port, guest: 22, host: $ssh_port
-  config.vm.network :forwarded_port, guest: 80, host: $http_port
+  config.vm.network :private_network, ip: $ip
 
   # Provisioning.
   config.vm.provision :shell, :path => 'puppet/bootstrap/bootstrap.sh'
@@ -32,8 +30,20 @@ Vagrant.configure('2') do |config|
     puppet.module_path    = 'puppet/modules'
   end
 
-  # Shared folders.
-  # - Set the ownership of the app/storage directory. Very important.
-  config.vm.synced_folder "app/storage", "/vagrant/app/storage", :owner => 'www-data', :group => 'www-data'
+  # Shared folders:
+  config.vm.synced_folder "craft/app", "/vagrant/craft/app",
+    :owner => 'www-data',
+    :group => 'www-data',
+    :mount_options => ['dmode=777,fmode=777']
+
+  config.vm.synced_folder "craft/config", "/vagrant/craft/config",
+    :owner => 'www-data',
+    :group => 'www-data',
+    :mount_options => ['dmode=777,fmode=777']
+
+  config.vm.synced_folder "craft/storage", "/vagrant/craft/storage",
+    :owner => 'www-data',
+    :group => 'www-data',
+    :mount_options => ['dmode=777,fmode=777']
 end
 
