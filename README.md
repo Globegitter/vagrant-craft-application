@@ -18,11 +18,11 @@ You may customise the server for your application using the clearly marked "conf
 - `/puppet/modules/app/manifests/init.pp`
 
 ## Getting started
-1. Download the repository ZIP file;
-2. Unzip it;
-3. Copy the files to the root of your Craft application;
-4. Run `vagrant up`;
-5. Wait a while.
+1. `git clone --recursive https://github.com/Globegitter/vagrant-craft-application.git`
+2. Copy the files to the root of your Craft application
+3. `rm -r .git` if necessary
+4. Run `vagrant up`
+5. Wait a while
 
 ### What it does
 Creates a virtual machine running a basic LAMP stack, configured to work with your Craft application.
