@@ -50,9 +50,9 @@ Modify your `/etc/hosts` file. Assuming you left the I.P. address setting in the
 The following examples assume that your configurable properties are as follows:
 
 - _Hostname_: `my-project.dev`
-- _Database Name_: `devdb`
-- _Database User_: `devdba`
-- _Database Password_: `devdba_password`
+- _Database Name_: `jimbob`
+- _Database User_: `dev`
+- _Database Password_: `password`
 
 ### Accessing the site via a browser
 Assuming you've added the appropriate entry to your `/etc/hosts` file, you can access your site at `http://my-project.dev/`.
@@ -62,9 +62,9 @@ You can connect to the database using Sequel Pro (or an equivalent piece of soft
 
 - _Connection Type_: `SSH`
 - _MySQL Host_: `127.0.0.1`
-- _Username_: `devdba`
-- _Password_: `devdba_password`
-- _Database_: `devdb`
+- _Username_: `jimbob`
+- _Password_: `password`
+- _Database_: `dev`
 - _Port_: `3306`
 - _SSH Host_: `localhost`
 - _SSH User_: `vagrant`
