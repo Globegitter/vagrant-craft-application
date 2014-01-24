@@ -32,16 +32,19 @@ Vagrant.configure('2') do |config|
 
   # Shared folders:
   config.vm.synced_folder "craft/app", "/vagrant/craft/app",
+    :create => 'true',
     :owner => 'www-data',
     :group => 'www-data',
     :mount_options => ['dmode=777,fmode=777']
 
   config.vm.synced_folder "craft/config", "/vagrant/craft/config",
+    :create => 'true',
     :owner => 'www-data',
     :group => 'www-data',
     :mount_options => ['dmode=777,fmode=777']
 
   config.vm.synced_folder "craft/storage", "/vagrant/craft/storage",
+    :create => 'true',
     :owner => 'www-data',
     :group => 'www-data',
     :mount_options => ['dmode=777,fmode=777']
